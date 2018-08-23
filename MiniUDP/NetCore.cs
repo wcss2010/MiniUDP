@@ -121,22 +121,22 @@ namespace MiniUDP
             case NetEventType.PeerConnected:
               peer.SetCore(this);
               peer.OnPeerConnected();
-              this.PeerConnected?.Invoke(peer, peer.Token);
+              this.PeerConnected.Invoke(peer, peer.Token);
               break;
 
             case NetEventType.PeerClosed:
               peer.OnPeerClosed(evnt.CloseReason, evnt.UserKickReason, evnt.SocketError);
-              this.PeerClosed?.Invoke(peer, evnt.CloseReason, evnt.UserKickReason, evnt.SocketError);
+              this.PeerClosed.Invoke(peer, evnt.CloseReason, evnt.UserKickReason, evnt.SocketError);
               break;
 
             case NetEventType.Payload:
               peer.OnPayloadReceived(evnt.EncodedData, evnt.EncodedLength);
-              this.PeerPayload?.Invoke(peer, evnt.EncodedData, evnt.EncodedLength);
+              this.PeerPayload.Invoke(peer, evnt.EncodedData, evnt.EncodedLength);
               break;
 
             case NetEventType.Notification:
               peer.OnNotificationReceived(evnt.EncodedData, evnt.EncodedLength);
-              this.PeerNotification?.Invoke(peer, evnt.EncodedData, evnt.EncodedLength);
+              this.PeerNotification.Invoke(peer, evnt.EncodedData, evnt.EncodedLength);
               break;
             
             default:

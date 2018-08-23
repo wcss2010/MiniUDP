@@ -121,22 +121,22 @@ namespace MiniUDP
     #region Events
     internal void OnPayloadReceived(byte[] data, int dataLength)
     {
-      this.PayloadReceived?.Invoke(this, data, dataLength);
+      this.PayloadReceived.Invoke(this, data, dataLength);
     }
 
     internal void OnNotificationReceived(byte[] data, int dataLength)
     {
-      this.NotificationReceived?.Invoke(this, data, dataLength);
+      this.NotificationReceived.Invoke(this, data, dataLength);
     }
 
     internal void OnPeerConnected()
     {
-      this.PeerConnected?.Invoke(this, this.token);
+      this.PeerConnected.Invoke(this, this.token);
     }
 
     internal void OnPeerClosed(NetCloseReason reason, byte userKickReason, SocketError error)
     {
-      this.PeerClosed?.Invoke(this, reason, userKickReason, error);
+      this.PeerClosed.Invoke(this, reason, userKickReason, error);
     }
     #endregion
 
